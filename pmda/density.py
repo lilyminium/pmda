@@ -27,7 +27,6 @@ from __future__ import absolute_import
 
 import numpy as np
 
-import MDAnalysis as mda
 from MDAnalysis.lib.util import fixedwidth_bins
 from MDAnalysis.analysis import density as serial_density
 
@@ -36,6 +35,7 @@ try:
     from MDAnalysis.analysis.density import _set_user_grid as set_user_grid
 except ImportError:
     # MDAnalysis >= 2.0.0
+    #pylint: disable=protected-access
     set_user_grid = serial_density.DensityAnalysis._set_user_grid
 
 from .parallel import ParallelAnalysisBase
